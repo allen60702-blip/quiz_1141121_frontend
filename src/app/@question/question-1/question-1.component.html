@@ -1,0 +1,39 @@
+<div  class="divCss1">
+  <h2>早餐問卷調查</h2>
+  <div class="divCss2">
+    <span>姓名 :  <input type="text" [(ngModel)] = "inputName" class = "inputData"></span><br><br>
+    <span>手機 :  <input type="text" [(ngModel)] = "inputCell" class = "inputData"></span><br><br>
+    <span>Email : <input type="text" [(ngModel)] = "inputEmail" class = "inputData"></span><br><br>
+    <span>年齡 :  <input type="number" [(ngModel)] = "inputAge" class = "inputData"></span><br><br>
+    <br><br>
+    <p>1 : 您通常吃早餐的時間點為何(單選)</p>
+    <input type="radio" class="inputRadio" name="Time"><label>a : 05:00~07:00</label><br><br>
+    <input type="radio" class="inputRadio" name="Time"><label>b : 07:00~09:00</label><br><br>
+    <input type="radio" class="inputRadio" name="Time"><label>c : 09:00~11:00</label><br><br>
+
+    <p>2 : 您通常選擇的早餐為何(多選)</p>
+    <input type="checkbox" class="inputCheckbox"><label>a : 蛋餅</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>b : 蘿蔔糕</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>c : 漢堡</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>d : 煎餃</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>e : 飯糰</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>f : 燒餅油條</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>g : 鐵板麵</label><br><br>
+    <input type="checkbox" class="inputCheckbox"><label>h : 其他</label><br><br>
+
+    <!-- <p>3 : 您對臺灣的早餐類型有何看法</p>
+  <input type="text" class="inputText" [(ngModel)]="inputAns"
+    placeholder="例如:很多樣、太油、某樣早餐真有特色、非常神奇的早餐奶茶...ฅ(^• ɪ •^)ฅ"><br>
+  <h4>您的回答為 : {{ inputAns }}</h4> -->
+
+    <p>3 : 您對臺灣的早餐類型有何看法</p>
+    <textarea type="text" class="textareaData" [(ngModel)]="textareaAns"
+      placeholder="例如:很多樣、太油、某樣早餐真有特色、非常神奇的早餐奶茶...ฅ(^• ɪ •^)ฅ"></textarea>
+    <h4>您的回答為 : {{ textareaAns }}</h4>
+    <div class = "divCss3">
+      <button routerLink = "/questionnaire-homepage" class = "btnCss1">回首頁</button>
+      <button (click) = "openDialog()" class = "btnCss1">送出</button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

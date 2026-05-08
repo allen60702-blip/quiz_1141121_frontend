@@ -1,0 +1,65 @@
+<h2 mat-dialog-title class="login-title">
+  {{ isRegisterMode ? '✨ 建立新帳號' : '👤 會員登入' }}
+</h2>
+
+<mat-dialog-content class="login-content" [class.register-height]="isRegisterMode">
+  <div class="input-field">
+    <label>電子信箱 (Email) <span class="required">*</span></label>
+    <input type="email" [(ngModel)]="email" placeholder="請輸入 Email">
+  </div>
+
+  <div class="input-field">
+    <label>設定密碼 <span class="required">*</span></label>
+    <input type="password" [(ngModel)]="password" placeholder="請輸入密碼">
+  </div>
+
+  @if (isRegisterMode) {
+    <div class="input-field">
+      <label>姓名 <span class="required">*</span></label>
+      <input type="text" [(ngModel)]="name" placeholder="您的姓名">
+    </div>
+
+    <div class="input-field">
+      <label>手機號碼</label>
+      <input type="text" [(ngModel)]="phone" placeholder="09xx-xxx-xxx">
+    </div>
+
+    <div class="input-field">
+      <label>您的年齡</label>
+      <input type="number" [(ngModel)]="age" placeholder="請輸入數字">
+    </div>
+  }
+
+  @if (errorData) {
+    <p class="error-msg">⚠️ {{ errorData }}</p>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions class="actions-column">
+  <button (click)="onSubmit()" class="btn-submit">
+    {{ isRegisterMode ? '註冊並登入' : '立即登入' }}
+  </button>
+
+  <div class="switch-mode">
+    <span>{{ isRegisterMode ? '已經有帳號了？' : '第一次來嗎？' }}</span>
+    <a (click)="toggleMode()">{{ isRegisterMode ? '切換到登入' : '我要註冊' }}</a>
+  </div>
+
+  <button (click)="onNoClick()" class="btn-link">取消</button>
+</mat-dialog-actions>
+
+
+<!-- 原本寫的 -->
+<!-- <h2 mat-dialog-title>管理員登入</h2>
+<mat-dialog-content>
+  <p>帳號 : <input type="text" [(ngModel)] = "account"></p>
+  <p>密碼 : <input type="password" [(ngModel)] = "password"></p><br>
+  <label style = "color: red;">{{ this.errorData }}</label>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onClick()" class = "btnCss1">登入</button>
+  <button (click)="onNoClick()" class = "btnCss1">取消</button>
+</mat-dialog-actions> -->
+
+
+<!-- routerLink="/questionnaire-manager" -->

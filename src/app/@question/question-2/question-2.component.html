@@ -1,0 +1,99 @@
+<div class="divCss1">
+  <h2>{{ questionData.quiz?.title }}</h2>
+  <span class="date-info">問卷日期 : {{ questionData.quiz?.startDate }} ~ {{ questionData.quiz?.endDate }}</span>
+
+  <div class="divCss2">
+    <label class="desc-text">問卷說明 : {{ questionData.quiz?.description }}</label>
+    <span>姓名 :  <input type="text" [(ngModel)]="inputName" class="inputData" placeholder="請輸入姓名"></span><br><br>
+    <span>手機 :  <input type="text" [(ngModel)]="inputPhone" class="inputData" placeholder="請輸入手機"></span><br><br>
+    <span>Email : <input type="text" [(ngModel)]="inputEmail" class="inputData" placeholder="請輸入 Email"></span><br><br>
+    <span>年齡 :  <input type="number" [(ngModel)]="inputAge" class="inputData" placeholder="請輸入年齡"></span>
+
+    <hr style="border: 0.5px solid #E6C9A8; margin: 30px 0;">
+
+    @for(question of questionData.questionList; track question.questionId) {
+      <div class="question-block">
+        <p>
+          {{ question.questionId }}. {{ question.question }}
+          @if(question.required) { <span style="color: red;">*</span> }
+        </p>
+
+        @if(question.type === 'Single') {
+          @for(optName of question.optionArray; track $index) {
+            <label class="d-block">
+              <input type="radio"
+                     [name]="'q' + question.questionId"
+                     [value]="optName"
+                     [(ngModel)]="question.userAnswer">
+              {{ optName }}
+            </label>
+          }
+        }
+
+        @if(question.type === 'Multi') {
+          @for(optName of question.optionArray; track $index) {
+            <label class="d-block">
+              <input type="checkbox"
+                     [value]="optName"
+                     (change)="onCheckboxChange(question, optName, $event)">
+              {{ optName }}
+            </label>
+          }
+        }
+
+        @if(question.type === 'Text') {
+          <textarea class="textareaData"
+                    [(ngModel)]="question.userAnswer"
+                    placeholder="請輸入您的看法..."></textarea>
+        }
+      </div>
+      <br>
+    }
+  </div>
+
+  <div class="divCss3">
+    <button routerLink="/questionnaire-homepage" class="btnCss1">回首頁</button>
+    <button (click)="openDialog()" class="btnCss1">送出</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+<!-- ============================================================================================================================== -->
+<!-- 原本的死資料寫法 -->
+<!-- <div class="divCss1">
+  <h2>{{ questionData.title }}</h2>
+  <label>問卷日期 : {{ questionData.startDate }}~{{ questionData.endDate }}</label>
+  <div class="divCss2">
+    <label>問卷說明 : {{ questionData.description }}</label><br><br>
+    <span>姓名 :  <input type="text" [(ngModel)] = "inputName" class = "inputData"></span><br><br>
+    <span>手機 :  <input type="text" [(ngModel)] = "inputPhone" class = "inputData"></span><br><br>
+    <span>Email : <input type="text" [(ngModel)] = "inputEmail" class = "inputData"></span><br><br>
+    <span>年齡 :  <input type="number" [(ngModel)] = "inputAge" class = "inputData"></span><br><br>
+    @for(question of questionData.questionList; track $index) {
+      <p>{{ question.questionId }}.{{ question.question }}</p>
+      @if(question.type == 'Single') {
+        @for(item of question.options; track $index) {
+          <p><input type="radio" name = "{{ question.questionId }}" class="inputRadio">{{ item.optionName }}</p>
+        }
+      }
+      @if(question.type == 'Single') {
+        @for(optName of question.optionArray; track $index) {
+          <p><input type="radio" [name]="question.questionId" [value]="optName"> {{ optName }}</p>
+        }
+      }
+      @if(question.type == 'Multi') {
+        @for(item of question.options; track $index) {
+          <p><input type="checkbox" class="inputCheckbox">{{ item.optionName }}</p>
+        }
+      }
+      @if(question.type == 'Text') {
+        <textarea type="text" class="textareaData" [(ngModel)] = "textareaAns" placeholder="例如:很多樣、太油、某樣早餐真有特色、非常神奇的早餐奶茶...ฅ(^• ɪ •^)ฅ"></textarea>
+        <h4>您的回答為 : {{ textareaAns }}</h4>
+      }
+    }
+  </div>
+  <div class = "divCss3">
+    <button routerLink = "/questionnaire-homepage" class = "btnCss1">回首頁</button>
+    <button (click) = "openDialog()" class = "btnCss1">送出</button>
+  </div>
+</div> -->

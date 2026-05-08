@@ -1,0 +1,70 @@
+<div class="divCss1">
+  <h2>新增問卷</h2>
+
+  <div class="divCss2">
+    <fieldset class="section-box">
+      <legend>1. 問卷基本資料</legend>
+      <div class="form-group">
+        <label>問卷名稱：</label>
+        <input type="text" [(ngModel)]="quizObj.title" class="inputData" placeholder="例如：XXXX問卷調查">
+      </div>
+      <div class="form-group">
+        <label>問卷說明：</label>
+        <textarea [(ngModel)]="quizObj.description" class="textareaBasic" placeholder="請描述問卷目的..."></textarea>
+      </div>
+      <div class="form-group date-row">
+        <label>開始日期：</label>
+        <input type="date" [(ngModel)]="quizObj.startDate">
+        <label style="position:static; margin-left: 20px;">結束日期：</label>
+        <input type="date" [(ngModel)]="quizObj.endDate">
+      </div>
+    </fieldset>
+
+    <fieldset class="section-box" style="margin-top: 30px;">
+      <legend>2. 題目設計</legend>
+
+      @for(q of questionList; track q.questionId) {
+        <div class="question-edit-card">
+          <div class="card-header">
+            <span>題目 {{ q.questionId }}</span>
+            <button class="btn-delete" (click)="deleteQuestion($index)">刪除</button>
+          </div>
+
+          <div class="form-group">
+            <label>題目內容：</label>
+            <input type="text" [(ngModel)]="q.question" class="inputData" style="width: 70%;">
+            <label style="position:static; margin-left: 10px;">
+              <input type="checkbox" [(ngModel)]="q.required"> 必填
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>回答類型：</label>
+            <select [(ngModel)]="q.type" class="inputSelect">
+              <option value="Single">單選</option>
+              <option value="Multi">多選</option>
+              <option value="Text">簡答文字</option>
+            </select>
+          </div>
+
+          @if(q.type !== 'Text') {
+            <div class="form-group">
+              <label>選項設定：</label>
+              <input type="text" [(ngModel)]="q.options" class="inputData" style="width: 30%;"
+                     placeholder="選項請用分號分隔，例如：蛋餅;漢堡;三明治">
+            </div>
+          }
+        </div>
+      }
+
+      <button (click)="addQuestion()" class="btn-add-q">＋ 新增題目</button>
+    </fieldset>
+  </div>
+
+  <div class="divCss3">
+    <button routerLink="/questionnaire-manager" class="btnCss1">取消</button>
+    <button (click)="submit()" class="btnCss1">儲存並發布</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,208 @@
+.divCss {
+  width: 100%;
+  min-height: 100%;
+  padding-top: 5%;
+  background-image: url('/背景圖.avif');
+  background-image: no-repeat;
+  background-size: cover;
+}
+
+/* 頂部管理列 (Manager 專用) */
+.header-bar {
+  width: 80vw;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  border-left: 8px solid #8A5A2B;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  h2 { color: #8A5A2B; margin: 0; font-weight: bold; }
+  .admin-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    .user-info { color: #5D4037; font-weight: 500; }
+  }
+}
+
+.divCss1 {
+  position: relative;
+  width: 80vw;
+  padding: 20px;
+  margin: 0 auto;
+  justify-content: center;
+  border-radius: 20px;
+  // border: 2px solid black;
+  // background-color: #fde3e3;
+  border: 2px solid #8A5A2B; // new
+  background-color: #fde3e3; // new
+}
+
+/* 上方按鈕區：靠右 */
+.user-control-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* 搜尋區塊內容佈局 */
+.search-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .search-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    label {
+      color: #5D4037;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input {
+      padding: 8px 12px;
+      border: 1px solid #E6C9A8;
+      border-radius: 8px;
+      outline: none;
+      &:focus { border-color: #8A5A2B; }
+    }
+
+    .date-split { color: #8A5A2B; }
+  }
+}
+
+.divCss2 {
+  width: 83vw;
+  margin: 0 auto;
+  background: white; // new
+  border-radius: 10px; // new
+  padding: 10px; // new
+}
+
+.btnCss1 {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #f6bcbc;
+  color: #7a2e2e;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btnCss1:hover {
+  background-color: #f1a9a9;
+}
+
+.btnCss2 {
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: #f6bcbc;
+  color: #7a2e2e;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btnCss2:hover {
+  background-color: #f1a9a9;
+}
+
+.tableCss {
+  width: 100%;
+  th {
+    // background-color: #FFF3E0;
+    // background-color: #FFE4E1;
+    // background-color: #F7A8A8;
+    // background-color: #E5989B;
+    background: linear-gradient(135deg, #FFF3E0, #FFD6A5);
+    color: #8A5A2B; // new
+    font-weight: bold; // new
+    // border: 1px solid black;
+    // border-radius: 10px;
+  }
+
+  td {
+    // background-color: rgb(11, 195, 215);
+
+    // background-color: #FFE4E1;
+    // border: 1px solid rgb(19, 227, 210);
+    // border-radius: 10px;
+
+    padding: 12px; // new
+  }
+
+  tr:hover {
+    background-color: #f5f5f5; // new
+  }
+
+  // tr.mat-mdc-row:nth-child(even) td{
+  //   // background-color: #14d1a5;
+  //   background-color: #ffc4c4;
+  // }
+
+  // tr.mat-mdc-row:hover td{
+  //   background-color: #dde5fa;
+  //   transition: background-color 0.2s ease;
+  // }
+}
+
+/* 登入 & 問卷後台：質感深棕色 */
+.btn-login, .btn-admin {
+  background-color: #8A5A2B;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #5D4037;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+}
+
+/* 登出按鈕：莫蘭迪粉紅（溫和不突兀） */
+.btn-logout-muted {
+  background-color: #E5989B; // 降低彩度的紅色
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #B5838D;
+    transform: translateY(-1px);
+  }
+}
+
+/* 搜尋按鈕：霧面棕 */
+.btn-search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #A67C52;
+  color: white;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover { background-color: #8A5A2B; }
+}

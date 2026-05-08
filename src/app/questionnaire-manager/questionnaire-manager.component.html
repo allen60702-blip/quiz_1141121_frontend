@@ -1,0 +1,127 @@
+<div class = "divCss">
+  <div class="divCss1">
+    <div class="header-row">
+      <h2 class="page-title">問卷後台管理系統</h2>
+      <div class="admin-controls">
+        <span class="user-label">管理者：<b>{{ accountAuthService.currentUser()?.name }}</b></span>
+        <button class="btn-home-outline" routerLink="/questionnaire-homepage">返回首頁</button>
+        <button class="btn-logout-muted" (click)="onLogout()">安全登出</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="search-section">
+      <!-- <button class="btnCss1" routerLink="/questionnaire-homepage">返回首頁</button> -->
+      <div class="search-item">
+        <label>問卷名稱 : </label>
+        <input type="text" [(ngModel)]="searchData" placeholder="請輸入關鍵字">
+      </div>
+      <br><br>
+      <div class="search-item">
+        <label>
+          統計時間 : <input type="date" min="2025-11-21" max="2026-12-31" [(ngModel)]='inputDate'>
+                    <span class="date-split"> ～ </span>
+                    <input type="date" min="2025-11-21" max="2026-12-31" [(ngModel)]='inputDate1'>
+        </label>
+      </div>
+      <button (click)="changeInput()" class="btn-search"><svg xmlns="http://www.w3.org/2000/svg" height="20px"
+        viewBox="0 -960 960 960" width="20px" fill="#A7C4E5">
+        <path
+          d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z" />
+      </svg>搜尋</button>
+    </div>
+  </div><br>
+
+  <div class="mat-elevation-z8, divCss2">
+    <!-- <div class="action-bar">
+      <mat-icon fontIcon="delete" class="icon-btn delete-icon" (click)="deleteSelected()" title="刪除選中項目"></mat-icon>
+      <mat-icon fontIcon="add" class="icon-btn add-icon" routerLink="/questionnaire-create" title="新增問卷"></mat-icon>
+      <mat-icon fontIcon="edit" class="icon-btn edit-icon-top" (click)="editSelected()" title="編輯選中問卷"></mat-icon>
+    </div> -->
+    <div class="action-bar">
+      <button class="icon-btn action-delete" (click)="deleteSelected()" title="刪除選中項目">
+        <mat-icon fontIcon="delete"></mat-icon>
+      </button>
+
+      <a class="icon-btn action-add" routerLink="/questionnaire-create" title="新增問卷">
+        <mat-icon fontIcon="add"></mat-icon>
+      </a>
+
+      <button class="icon-btn action-edit" (click)="editSelected()" title="編輯選中問卷">
+        <mat-icon fontIcon="edit"></mat-icon>
+      </button>
+    </div>
+
+    <!-- <mat-icon fontIcon="delete"></mat-icon> -->
+    <!-- <mat-icon fontIcon="add"></mat-icon> -->
+    <table mat-table [dataSource]="dataSource" class="tableCss">
+
+      <!-- 勾選刪除 Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef> 選取 </th>
+        <td mat-cell *matCellDef="let element">
+          <input type="checkbox" (change)="toggleSelection(element.position)" [checked]="selectedIds.has(element.position)">
+        </td>
+      </ng-container>
+
+      <!-- <mat-icon fontIcon="delete" (click)="deleteSelected()" style="cursor: pointer; color: red;"></mat-icon> -->
+      <!-- <mat-icon fontIcon="add" routerLink="/create-quiz" style="cursor: pointer; color: blue;"></mat-icon> -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> 編號 </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> 名稱 </th>
+        <td mat-cell *matCellDef="let element"> <a [routerLink]="['/question', element.position]">{{element.name}}</a></td>
+      </ng-container>
+
+      <!-- Published Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> 狀態 </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- 編輯Operation Column -->
+      <ng-container matColumnDef="operation">
+        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/questionnaire-edit', element.position]" title="編輯問卷" class="row-edit-link">
+            <mat-icon fontIcon="edit" class="row-edit-icon"></mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- StartTime Column -->
+      <ng-container matColumnDef="startTime">
+        <th mat-header-cell *matHeaderCellDef> 開始時間 </th>
+        <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
+      </ng-container>
+
+      <!-- EndTime Column -->
+      <ng-container matColumnDef="endTime">
+        <th mat-header-cell *matHeaderCellDef> 結束時間 </th>
+        <td mat-cell *matCellDef="let element"> {{element.endTime}} </td>
+      </ng-container>
+
+      <!-- Result Column -->
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef> 結果 </th>
+        <td mat-cell *matCellDef="let element"> <a [routerLink]="['/result', element.position]">{{element.result}}</a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

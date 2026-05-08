@@ -1,0 +1,40 @@
+<!-- <div class = "divCss1">
+  @for(titleData of questionArray; track $index) {
+    <p>{{ titleData.id }}.{{ titleData.questionName }}</p>
+    @if(titleData.id == 1) {
+    @for(data of chartArray; track $index) {
+    <div class = "divCss2">
+      <canvas id="{{ data.id }}"></canvas>
+    </div>
+    }
+  }
+  }
+</div>
+
+<div class = "divCss3">
+  <button routerLink = "/questionnaire-homepage">回首頁</button>
+</div>
+
+<router-outlet></router-outlet> -->
+
+
+<div class="divCss1">
+  @for (titleData of questionArray; track titleData.id) {
+    <p>{{ titleData.id }}. {{ titleData.questionName }}</p>
+
+    @if (getChartData(titleData.id)) {
+      <div class="divCss2">
+        <canvas [id]="'canvas-' + titleData.id"></canvas>
+      </div>
+    } @else {
+      @if (titleData.type === 'Text') {
+        <p>－－＞（此為開放性文字題，無統計圖表）</p>
+      }
+    }
+  }
+  <div class="divCss3">
+    <button routerLink="/questionnaire-homepage" class = "btnCss1">回首頁</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

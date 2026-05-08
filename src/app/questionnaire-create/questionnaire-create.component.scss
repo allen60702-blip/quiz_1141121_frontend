@@ -1,0 +1,107 @@
+h2 {
+  text-align: center;
+}
+
+.divCss1 {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 2%;
+  padding-bottom: 8%;
+  background: linear-gradient(135deg, #FFF3E0, #FFD6A5);
+}
+
+.divCss2 {
+  width: 70vw;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.section-box {
+  border: 2px solid #E6C9A8;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  legend {
+    font-weight: bold;
+    color: #8A5A2B;
+    padding: 0 10px;
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+  label {
+    color: #8A5A2B;
+    font-weight: 600;
+  }
+}
+
+.inputData, .textareaBasic, .inputSelect {
+  border: 1px solid #E6C9A8;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.textareaBasic {
+  width: 80%;
+  height: 80px;
+  vertical-align: top;
+  resize: none;
+}
+
+.question-edit-card {
+  background: #FFF8EF;
+  border-left: 5px solid #FFD6A5;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-bottom: 1px dashed #E6C9A8;
+  }
+}
+
+.btn-add-q {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: 2px dashed #8A5A2B;
+  color: #8A5A2B;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover { background: #FFF3E0; }
+}
+
+.btn-delete {
+  background: #ff7675;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+.divCss3 {
+  position: fixed; // 改為 fixed 讓它固定在底部
+  bottom: 20px;
+  right: 15%;
+  display: flex;
+  gap: 15px;
+}
+
+.btnCss1 {
+  background: #FFF8EF;
+  color: #8A5A2B;
+  border: 1px solid #E6C9A8;
+  border-radius: 24px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { background: #FFEEDB; transform: translateY(-2px); }
+}

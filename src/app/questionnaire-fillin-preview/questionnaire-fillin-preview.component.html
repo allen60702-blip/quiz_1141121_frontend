@@ -1,0 +1,110 @@
+<div class="preview-container">
+  <div class="card shadow">
+    <div class="card-header bg-warm">
+      <h2>問卷填寫內容預覽</h2>
+      <p>感謝您的參與，以下是您填寫的資料副本：</p>
+    </div>
+
+    <div class="card-body">
+      <section class="info-section">
+        <h3>1. 基本資料</h3>
+        <div class="info-grid">
+          <p><strong>問卷標題：</strong> {{ previewData.quizInfo?.title }}</p>
+          <p><strong>填寫姓名：</strong> {{ previewData.userInfo?.name }}</p>
+          <p><strong>手機號碼：</strong> {{ previewData.userInfo?.phone }}</p>
+          <p><strong>電子信箱：</strong> {{ previewData.userInfo?.email }}</p>
+          <p><strong>年齡：</strong> {{ previewData.userInfo?.age }}</p>
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="answer-section">
+        <h3>2. 回答內容</h3>
+
+        @for(item of previewData.answers; track item.questionId; let i = $index) {
+          <div class="answer-item">
+            <p class="q-title">
+              <strong>{{ i + 1 }}. {{ item.question }}</strong>
+              <!-- <span class="q-type">({{ item.type === 'Single' ? '單選' : item.type === 'Multi' ? '多選' : '簡答' }})</span> -->
+            </p>
+
+            @if(item.type === 'Single' || item.type === 'Multi') {
+              <div class="options-list">
+                @for(opt of item.optionArray; track opt) {
+                  <div class="option-row" [class.is-selected]="isOptSelected(item.userAnswer, opt)">
+                    <span class="dot"></span>
+                    {{ opt }}
+                    @if(isOptSelected(item.userAnswer, opt)) {
+                      <span class="check-mark">✓ (您的選擇)</span>
+                    }
+                  </div>
+                }
+              </div>
+            }
+
+            @if(item.type === 'Text') {
+              <div class="text-answer">
+                <p>您的回答：<span class="highlight">{{ item.userAnswer || '未填寫' }}</span></p>
+              </div>
+            }
+          </div>
+        }
+      </section>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-secondary" routerLink="/questionnaire-homepage">返回首頁</button>
+      <button class="btn btn-primary" [routerLink]="['/result', previewData.quizInfo?.id]">
+        查看統計結果
+      </button>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- <div class="preview-container">
+  <div class="card shadow">
+    <div class="card-header bg-warm">
+      <h2>問卷填寫內容預覽</h2>
+      <p>感謝您的參與，以下是您填寫的資料副本：</p>
+    </div>
+
+    <div class="card-body">
+      <section class="info-section">
+        <h3>1. 基本資料</h3>
+        <div class="info-grid">
+          <p><strong>問卷標題：</strong> {{ previewData.quizInfo?.title }}</p>
+          <p><strong>填寫姓名：</strong> {{ previewData.userInfo?.name }}</p>
+          <p><strong>手機號碼：</strong> {{ previewData.userInfo?.phone }}</p>
+          <p><strong>電子信箱：</strong> {{ previewData.userInfo?.email }}</p>
+          <p><strong>年齡：</strong> {{ previewData.userInfo?.age }}</p>
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="answer-section">
+        <h3>2. 回答內容</h3>
+        @for(item of previewData.answers; track item.questionId) {
+          <div class="answer-item">
+            <p class="q-text">{{ item.questionId }}. {{ item.question }}</p>
+            <p class="ans-text">您的回答：
+              <span class="highlight">{{ item.userAnswer || '未填寫' }}</span>
+            </p>
+          </div>
+        }
+      </section>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-secondary" routerLink="/questionnaire-homepage">返回首頁</button>
+      <button class="btn btn-primary" [routerLink]="['/result', previewData.quizInfo?.id]">
+        查看統計結果
+      </button>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet> -->

@@ -1,0 +1,129 @@
+/* 標題居中並增加間距 */
+.login-title {
+  color: #8A5A2B;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
+
+/* 內容容器：移除捲軸限制，讓它自動擴張 */
+.login-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 24px !important; // 使用 !important 覆蓋 Material 預設 padding
+  overflow: visible !important; // 關鍵：禁止內部捲軸，讓 Dialog 整體撐開
+
+  // 當切換到註冊模式時，這個容器會自然變長
+  &.register-height {
+    transition: all 0.3s ease;
+  }
+
+  .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #5d4037;
+      .required { color: #e74c3c; margin-left: 2px; }
+    }
+
+    input {
+      padding: 12px;
+      border: 1px solid #E6C9A8;
+      border-radius: 10px;
+      background: #fffcf9;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: #8A5A2B;
+        background: #ffffff;
+      }
+    }
+  }
+
+  .error-msg {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    text-align: center;
+    background: #fff5f5;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ffdada;
+  }
+}
+
+/* 按鈕與切換區域 */
+.actions-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 24px 30px 24px;
+  gap: 15px;
+
+  .btn-submit {
+    width: 100%; // 按鈕撐滿寬度比較大器
+    background: #8A5A2B;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(138, 90, 43, 0.2);
+    transition: 0.2s;
+
+    &:hover {
+      background: #5d4037;
+      transform: translateY(-2px);
+    }
+  }
+
+  .switch-mode {
+    font-size: 0.9rem;
+    color: #777;
+
+    a {
+      color: #8A5A2B;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-left: 5px;
+      &:hover { color: #d35400; }
+    }
+  }
+
+  .btn-link {
+    background: none;
+    border: none;
+    color: #bbb;
+    font-size: 0.8rem;
+    cursor: pointer;
+    &:hover { color: #888; text-decoration: underline; }
+  }
+}
+
+
+// 原本寫的
+// .btnCss1 {
+//   background: #FFF8EF;
+//   color: #8A5A2B;
+
+//   border: 1px solid #E6C9A8;
+//   border-radius: 24px;
+//   padding: 10px 22px;
+//   margin-right: 3%;
+
+//   cursor: pointer;  // 滑鼠移到這個元素上時，游標變成「手指」
+//   transition: background 0.2s ease;  // 當背景顏色改變時，用 0.2 秒平滑地變化，而不是瞬間跳色
+// }
+
+// .btnCss1:hover {
+//   background: #FFEEDB;
+// }

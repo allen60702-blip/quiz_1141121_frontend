@@ -1,0 +1,114 @@
+h2 {
+  text-align: center;
+  color: #8A5A2B;
+}
+
+.divCss1 {
+  min-height: 100vh;
+  padding: 3% 0 10% 0;
+  background: linear-gradient(135deg, #FFF3E0, #FFD6A5);
+}
+
+.divCss2 {
+  width: 75vw;
+  margin: 0 auto;
+}
+
+.section-box {
+  border: 2px solid #E6C9A8;
+  border-radius: 15px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.6);
+  legend {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #8A5A2B;
+    padding: 0 10px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  label {
+    font-weight: 600;
+    color: #8A5A2B;
+  }
+}
+
+.inputData, .textareaBasic, .inputSelect {
+  border: 1px solid #E6C9A8;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.textareaBasic {
+  width: 90%;
+  height: 100px;
+  resize: none;
+}
+
+.question-edit-card {
+  background: #ffffff;
+  border-left: 6px solid #FFD6A5;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+  }
+}
+
+.btn-add-q {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 2px dashed #8A5A2B;
+  color: #8A5A2B;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover { background: #FFF3E0; }
+}
+
+.btn-delete {
+  background: #ff7675;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  &:hover { background: #e17055; }
+}
+
+.divCss3 {
+  position: fixed;
+  bottom: 30px;
+  right: 10%;
+  display: flex;
+  gap: 20px;
+}
+
+.btnCss1 {
+  background: #FFF8EF;
+  color: #8A5A2B;
+  border: 1px solid #E6C9A8;
+  border-radius: 25px;
+  padding: 12px 35px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  &:hover {
+    background: #FFEEDB;
+    transform: translateY(-3px);
+  }
+}
